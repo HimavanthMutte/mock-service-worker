@@ -27,4 +27,17 @@ export const usePosts = () =>{
         }
     }
 
+    const handleCreatePost = async(post: PostWithoutId):Promise<void>=>{
+        try {
+            await axios.post(`${BASE_API_URL}/posts`,{
+                ...post
+            })
+            await handleFetchPosts()
+            setError('')
+        }
+        catch(err) {
+            if (err instanceof Error) setError(err.message);
+        }
+    }
+
 }
