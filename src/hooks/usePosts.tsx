@@ -40,4 +40,21 @@ export const usePosts = () =>{
         }
     }
 
+    const handleLike = async(postId: string):Promise<void>=>{
+        try {
+            const post = posts.find(p=>p.id===postId)
+            if (!post) {
+                setError("Post not Found")
+                return
+            }
+            await axios.put(`${BASE_API_URL}/${postId}`,{
+                ...post,
+                likes: post.likes+1
+            })
+        }
+        catch(err) {
+            if (err instanceof Error) setError(err.message);
+        }
+    }
+
 }
