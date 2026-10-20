@@ -1,0 +1,6 @@
+{
+  "posts": [
+    { "id": "1", "title": "a title", "likes": 10 },
+    { "id": "2", "title": "another title", "likes": 8 }
+  ]
+}
