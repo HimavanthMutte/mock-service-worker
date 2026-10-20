@@ -51,10 +51,25 @@ export const usePosts = () =>{
                 ...post,
                 likes: post.likes+1
             })
+            await handleFetchPosts()
+            setError('')
         }
         catch(err) {
             if (err instanceof Error) setError(err.message);
         }
     }
 
+    const handleDelete = async(postId: string):Promise<void>=>{
+        try {
+            await axios.delete(`${BASE_API_URL}/posts/${postId}`)
+            await handleFetchPosts()
+            setError('')
+        }
+        catch(err) {
+            if (err instanceof Error) setError(err.message);
+        }
+    }
+
+    return {posts,error,handleFetchPosts,handleCreatePost,handleLike,handleDelete}
 }
+
