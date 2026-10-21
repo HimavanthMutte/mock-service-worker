@@ -43,5 +43,7 @@ describe("Testing Item Component",()=>{
         expect(fakeDelete).toHaveBeenCalledOnce()
         expect(fakeLike).toHaveBeenCalledTimes(1)
 
+        expect(fakeDelete).toHaveBeenCalledWith(mockData.id);
+        expect(fakeLike).toHaveBeenCalledWith(mockData.id);
     })
 })
